@@ -15,7 +15,7 @@ const config = {
   },
   output: {
     filename: 'bundle.js',
-    path: path.resolve(__dirname, 'dist')
+    path: path.resolve(__dirname, 'dist'),
   },
   module: {
     rules: [
@@ -23,7 +23,7 @@ const config = {
         test: /\.(j|t)sx?$/,
         include: path.resolve(__dirname, 'src'),
         exclude: /node_modules/,
-        loader: 'babel-loader'
+        loader: 'babel-loader',
       },
       {
         test: /\.(jpg|png|gif)$/,
@@ -32,17 +32,15 @@ const config = {
             loader: 'url-loader',
             options: {
               limit: 8192,
-            }
-          }
-        ]
+            },
+          },
+        ],
       },
       {
         test: /\.svg$/,
-        use: [
-          'file-loader'
-        ]
-      }
-    ]
+        use: ['file-loader'],
+      },
+    ],
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -50,12 +48,11 @@ const config = {
       template: require('html-webpack-template'),
       title: 'Chris Lis | Home',
     }),
-    new ForkTsCheckerWebpackPlugin()
-  ]
-}
+    new ForkTsCheckerWebpackPlugin(),
+  ],
+};
 
 /** @type import('webpack').ConfigurationFactory */
 module.exports = (env, args) => {
-  return config
-}
-
+  return config;
+};
